@@ -23,17 +23,22 @@ int main(){
     while(!exitApplication){
         cout << "select option: ";
         cin >> selectedOption;
-        
-        if (selectedOption == 1){
-            cout << "Enter Master Password: ";
-            cin >> masterPassword;
-            cout << "You're master password is: " << masterPassword << endl;
-        }
 
-        if (selectedOption == 5){
-            cout << "Exiting." <<endl;
-            exitApplication = true;
-            break;
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            cout << "Invalid Input. Input must be a number." << endl;
+        }else{
+            if (selectedOption == 1){
+                cout << "Enter Master Password: ";
+                cin >> masterPassword;
+                cout << "You're master password is: " << masterPassword << endl;
+            }
+            if (selectedOption == 5){
+                cout << "Exiting." <<endl;
+                exitApplication = true;
+                break;
+            }
         }
     }
 
