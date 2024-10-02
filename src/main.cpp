@@ -1,4 +1,6 @@
-#include <iostream>
+#include "/Users/shafayetulislam/Documents/locked/include/Options.h"
+
+
 #include <iostream>
 #include <termios.h> // For terminal I/O functions
 #include <unistd.h>  // For STDIN_FILENO
@@ -8,13 +10,11 @@ using namespace std;
 
 int main(){
 
+    Options options;
+
     cout << "Welcome to Locked!" << endl;
-    cout << "Enter Option: " << endl;
-    cout << "1. Register with Master Password" << endl;
-    cout << "2. Add New Password" << endl;
-    cout << "3. View Passwords" << endl;
-    cout << "4. Delete Password" << endl;
-    cout << "5. Exit" << endl;
+    options.displayOptions();
+
 
     int selectedOption;
     string masterPassword;
@@ -41,13 +41,6 @@ int main(){
             }
         }
     }
-
-    
-
-    
-
-
-
 
     return 0;
 }
