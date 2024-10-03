@@ -17,7 +17,6 @@ private:
     string option3viewpass;
     string option4deletepass;
     string option5exitapplication;
-
 };
 
 #endif
