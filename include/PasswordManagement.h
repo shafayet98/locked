@@ -1,7 +1,7 @@
 // PasswordManagement.h
 
-#ifndef PASSWORD_MANAGEMENT_H
-#define PASSWORD_MANAGEMENT_H
+#ifndef PASSWORDMANAGEMENT_H
+#define PASSWORDMANAGEMENT_H
 
 #include <string>
 
