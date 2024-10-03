@@ -1,5 +1,5 @@
-#include "/Users/shafayetulislam/Documents/locked/include/Options.h"
-#include "/Users/shafayetulislam/Documents/locked/include/PasswordManagement.h"
+#include "Options.h"
+#include "PasswordManagement.h"
 
 
 #include <iostream>
