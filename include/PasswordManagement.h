@@ -6,7 +6,7 @@
 #include <string>
 
 namespace PasswordManagement {
-    void storeMasterPassword(const std::string& masterpass);
+    void storeMasterPassword(const std::string& masterpass, const std::string& username);
 }
 
-#endif // PASSWORD_MANAGEMENT_H
+#endif // PASSWORDMANAGEMENT_H

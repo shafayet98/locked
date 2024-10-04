@@ -23,6 +23,9 @@ int main(){
 
     int selectedOption;
     string masterPassword;
+    string tag;
+    string website;
+    string username;
 
     bool exitApplication = false;
     while(!exitApplication){
@@ -37,9 +40,12 @@ int main(){
             if (selectedOption == 1){
                 cout << "Enter Master Password: ";
                 cin >> masterPassword;
-                cout << "You're master password is: " << masterPassword << endl;
+                cout << "Enter username: ";
+                cin >> username;
 
-                PasswordManagement::storeMasterPassword(masterPassword);
+                // cout << "You're master password is: " << masterPassword << endl;
+
+                PasswordManagement::storeMasterPassword(masterPassword, username);
             }
             if (selectedOption == 5){
                 cout << "Exiting." <<endl;
