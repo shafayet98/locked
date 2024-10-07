@@ -15,10 +15,10 @@ using namespace std;
 
 int main(){
 
-    Options options;
+    Options::Options menu;
 
     cout << "Welcome to Locked!" << endl;
-    options.displayOptions();
+    menu.displayOptions();
 
 
     int selectedOption;

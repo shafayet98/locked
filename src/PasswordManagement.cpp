@@ -1,15 +1,18 @@
 // PasswordManagement.cpp
 #include "PasswordManagement.h"
+
 #include <rapidjson/document.h>
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
 #include <iostream>
 #include <fstream>
 
+using namespace std;
+
 namespace PasswordManagement
 {
 
-    void storeMasterPassword(const std::string &masterpass, const std::string &username)
+    void storeMasterPassword(const string masterpass, const string username)
     {
         // Create a JSON object
         rapidjson::Document document;
