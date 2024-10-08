@@ -1,5 +1,6 @@
 #include "Options.h"
 #include "PasswordManagement.h"
+#include "Logo.h"
 
 
 #include <iostream>
@@ -17,7 +18,11 @@ int main(){
 
     Options::Options menu;
 
-    cout << "Welcome to Locked!" << endl;
+    Logo::TerminalLogo terminal_logo;
+    terminal_logo.display();
+    cout << endl;
+    cout << "A password management system for terminal!!!" << endl;
+    cout << endl;
     menu.displayOptions();
 
 
