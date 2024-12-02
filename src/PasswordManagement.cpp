@@ -14,36 +14,34 @@ namespace PasswordManagement
 
     void storeMasterPassword(const string masterpass, const string username)
     {
-        // Create a JSON object
+
+        std::string dirPath = "/Users/shafayetulislam/Documents/Locked/.data";
+        std::string filePath = dirPath + "/credentials.json";
+
+        std::ofstream file(filePath, std::ios::out);
+        if (!file)
+        {
+            std::cerr << "Error opening file for writing." << std::endl;
+            return;
+        }
+
         rapidjson::Document document;
         document.SetObject();
-
-        // Add the master password to the JSON object
+        
         rapidjson::Document::AllocatorType &allocator = document.GetAllocator();
         document.AddMember(rapidjson::StringRef("master_password"),
-                           rapidjson::Value(masterpass.c_str(), allocator).Move(),
-                           allocator);
+            rapidjson::Value(masterpass.c_str(), allocator).Move(),
+            allocator);
         document.AddMember(rapidjson::StringRef("username"),
-                           rapidjson::Value(username.c_str(), allocator).Move(),
-                           allocator);
+            rapidjson::Value(username.c_str(), allocator).Move(),
+            allocator);
 
-
-        // Convert JSON object to string
         rapidjson::StringBuffer buffer;
         rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
         document.Accept(writer);
 
-        std::ofstream file("/Users/shafayetulislam/locked/.data/credentials.json");
-        if (file.is_open())
-        {
-            file << buffer.GetString();
-            file.close();
-            std::cout << "Credentials stored in JSON file successfully." << std::endl;
-        }
-        else
-        {
-            std::cerr << "Error opening JSON file for writing." << std::endl;
-        }
+        file << buffer.GetString() << std::endl;
+        file.close();
     }
 
 } // namespace PasswordManagement

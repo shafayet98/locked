@@ -35,6 +35,8 @@ int main(){
     string website;
     string username;
 
+    PasswordManagement::storeMasterPassword("your_master_password", "your_username");
+
     bool exitApplication = false;
     while(!exitApplication){
         cout << "select option: ";
