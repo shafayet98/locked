@@ -59,9 +59,6 @@ int main(){
                 cin >> masterPassword;
                 cout << "Enter username: ";
                 cin >> username;
-
-                // cout << "You're master password is: " << masterPassword << endl;
-
                 PasswordManagement::storeMasterPassword(masterPassword, username);
             }
 
@@ -112,10 +109,9 @@ int main(){
                     cout << "Please Enter the website name for the requested password: ";
                     cin >> website_name;
                     requested_password =  PasswordManagement::showRequestedPassword(website_name);
-                    cout << "Requested Password: " << requested_password << "\n";
-
                     // show the password 
-                    // let the user copy the password 
+                    cout << "Requested Password: " << requested_password << "\n";
+                    // let the user copy the password :: Implement Later
                 }else{
                     cout << "Wrong Master Password. Please Try Again." << "\n";
                 }
@@ -123,7 +119,12 @@ int main(){
 
             }
 
-
+            else if (selectedOption == 4){
+                // get the website name for the password that needs to be deleted
+                // get the master password and verify it
+                // implement deletePassword(website_name)
+                // let user know that the deletion has been done successfully
+            }
 
 
             else if (selectedOption == 5){

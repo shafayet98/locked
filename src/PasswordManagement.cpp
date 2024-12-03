@@ -43,6 +43,8 @@ namespace PasswordManagement
 
         file << buffer.GetString() << std::endl;
         file.close();
+
+        cout << "Master Password has been created Successfully" << "\n";
     }
 
     bool checkMasterPassword(const string mpass){
@@ -136,6 +138,7 @@ namespace PasswordManagement
         outFile << buffer.GetString() << std::endl;
         outFile.close();
 
+        cout << "Password has been saved Successfully" << "\n";
     }
 
     string showRequestedPassword(const string website_name){
