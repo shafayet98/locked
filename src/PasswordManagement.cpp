@@ -190,5 +190,64 @@ namespace PasswordManagement
 
     }
 
+    bool deletePassword(const string website_name_del){
+
+        string dirPath = "/Users/shafayetulislam/Documents/Locked/.data";
+        string filePath = dirPath + "/credentials.json";
+
+        // get access of the file
+        ifstream file(filePath);
+        if (!file.is_open()){
+            cout << "Error: Could not open the credential file" << "\n";
+            return false;
+        }
+
+        // read the content of the file
+        stringstream buffer;
+        buffer << file.rdbuf();
+        string content = buffer.str();
+        file.close();
+
+        rapidjson::Document document;
+        document.Parse(content.c_str());
+
+        if(document.HasParseError() || !document.IsArray()){
+            cout << "Error: Parsing error occured while converting to JSON" << "\n";
+            return false;
+        }
+
+        bool foundWebsite = false;
+        for(rapidjson::SizeType i = 0; i< document.Size(); i++){
+            if(document[i].HasMember("website") && document[i]["website"].IsString()
+            && string(document[i]["website"].GetString()) == website_name_del){
+                // remove the item
+                document.Erase(document.Begin() + i);
+                foundWebsite = true;
+                break;
+            }
+        }
+
+        if (!foundWebsite) {
+            cout << "Website not found." << "\n";
+            return false;
+        }
+
+        // write the updated array after removing back to your file
+        ofstream outFile(filePath);
+        if (!outFile) {
+            cout << "Error opening file for writing." << "\n";
+            return false;
+        }
+
+
+        rapidjson::StringBuffer bfr;
+        rapidjson::Writer<rapidjson::StringBuffer> writer(bfr);
+        document.Accept(writer);
+        outFile << bfr.GetString() << endl;
+        outFile.close();
+
+        return true;
+    }
+
 
 } // namespace PasswordManagement

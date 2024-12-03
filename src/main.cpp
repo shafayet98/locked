@@ -120,12 +120,28 @@ int main(){
             }
 
             else if (selectedOption == 4){
-                // get the website name for the password that needs to be deleted
-                // get the master password and verify it
-                // implement deletePassword(website_name)
-                // let user know that the deletion has been done successfully
-            }
+                
+                string website_name_del;
+                string mpass;
 
+                // get the website name for the password that needs to be deleted
+                cout << "Please Enter the website name of the password you want to delete: ";
+                cin >> website_name_del;
+                // get the master password and verify it
+                cout << "Please enter the master passwrod for verification: ";
+                cin >> mpass;
+                // check master password 
+                bool pass_match = PasswordManagement::checkMasterPassword(mpass);
+                if (pass_match == true){
+                    // implement deletePassword(website_name_del)
+                    bool isDeleted = PasswordManagement::deletePassword(website_name_del);
+                    if (isDeleted == true){
+                        cout << "Password has been deleted Successfully" << "\n";
+                    }else{
+                        cout << "Error has been occured during deleting password" << "\n";
+                    }
+                }
+            }
 
             else if (selectedOption == 5){
                 cout << "Exiting." <<endl;

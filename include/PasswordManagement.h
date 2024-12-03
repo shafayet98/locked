@@ -13,6 +13,7 @@ namespace PasswordManagement {
     bool checkMasterPassword(const string mpass);
     void saveNewPassword(const string new_added_pass, const string new_pass_email, const string new_pass_website);
     string showRequestedPassword(const string website_name);
+    bool deletePassword(const string website_name_del);
 }
 
 #endif // PASSWORDMANAGEMENT_H
