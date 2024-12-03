@@ -56,7 +56,7 @@ int main(){
                 PasswordManagement::storeMasterPassword(masterPassword, username);
             }
 
-            if (selectedOption == 2){
+            else if (selectedOption == 2){
                 string mpass;
                 string new_added_pass;
                 string new_pass_email;
@@ -87,14 +87,35 @@ int main(){
                 // save the password
             }
 
+            else if (selectedOption == 3){
+                // get master password 
+                string mpass;
+                cout << "Please Enter Your Master Password: ";
+                cin >> mpass;
+                // check master password 
+                bool pass_match = PasswordManagement::checkMasterPassword(mpass);
+                // get the key
+                if (pass_match == true){
+                    // show the password 
+                    // let the user copy the password 
+                }else{
+                    cout << "Wrong Master Password. Please Try Again." << "\n";
+                }
+                
+
+            }
 
 
 
 
-            if (selectedOption == 5){
+            else if (selectedOption == 5){
                 cout << "Exiting." <<endl;
                 exitApplication = true;
                 break;
+            }
+
+            else{
+                cout << "Please select available options" << "\n";
             }
         }
     }
