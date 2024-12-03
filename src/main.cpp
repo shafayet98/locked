@@ -90,12 +90,21 @@ int main(){
             else if (selectedOption == 3){
                 // get master password 
                 string mpass;
+                string requested_password;
+                string website_name;
+
                 cout << "Please Enter Your Master Password: ";
                 cin >> mpass;
                 // check master password 
                 bool pass_match = PasswordManagement::checkMasterPassword(mpass);
                 // get the key
                 if (pass_match == true){
+                    // ask for the website name
+                    cout << "Please Enter the website name for the requested password: ";
+                    cin >> website_name;
+                    requested_password =  PasswordManagement::showRequestedPassword(website_name);
+                    cout << "Requested Password: " << requested_password << "\n";
+
                     // show the password 
                     // let the user copy the password 
                 }else{

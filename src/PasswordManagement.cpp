@@ -138,5 +138,9 @@ namespace PasswordManagement
 
     }
 
+    string showRequestedPassword(const string website_name){
+        return "abx";
+    }
+
 
 } // namespace PasswordManagement
