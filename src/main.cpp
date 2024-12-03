@@ -14,6 +14,13 @@
 
 using namespace std;
 
+/*
+
+Bug: if master password is already saved. the menu does not show the item but if user
+press 1 then the code executes of re-entering master password which it should NOT DO.
+
+*/
+
 
 
 int main(){
@@ -45,6 +52,8 @@ int main(){
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
             cout << "Invalid Input. Input must be a number." << endl;
         }else{
+
+
             if (selectedOption == 1){
                 cout << "Enter Master Password: ";
                 cin >> masterPassword;
@@ -75,7 +84,7 @@ int main(){
                     cin >> new_added_pass;
                     cout << "Please Enter Your Email (mandatory): " << "\n";
                     cin >> new_pass_email;
-                    cout << "Please Enter Website Name (mandatory): " << "\n";
+                    cout << "Please Enter Website Name (mandatory & must be unique): " << "\n";
                     cin >> new_pass_website;
 
                     PasswordManagement::saveNewPassword(new_added_pass, new_pass_email, new_pass_website);
@@ -83,7 +92,7 @@ int main(){
                 }else{
                     cout << "Wrong Master Password. Please Try Again." << "\n";
                 }
-                
+
                 // save the password
             }
 
