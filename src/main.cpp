@@ -10,18 +10,7 @@
 #include <string>
 #include <map>
 
-
-
 using namespace std;
-
-/*
-
-Bug: if master password is already saved. the menu does not show the item but if user
-press 1 then the code executes of re-entering master password which it should NOT DO.
-
-*/
-
-
 
 int main(){
 

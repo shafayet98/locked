@@ -1,6 +1,7 @@
 #include "Options.h"
 #include <iostream>
 #include <fstream>
+#include <string>
 
 
 Options::Options::Options() 
@@ -9,14 +10,15 @@ Options::Options::Options()
     , option3viewpass("Option 3: View Passwords")
     , option4deletepass("Option 4: Delete Passwords")
     , option5exitapplication("Option 5: Exit Application")
-{
-}
+{}
 
 void Options::Options::displayOptions()
 {
 
+    const std::string BASE_DIR = "./.data";
+
     // Check if credentials file exists 
-    std::string filePath = "/Users/shafayetulislam/Documents/Locked/.data/masters.json";
+    std::string filePath = BASE_DIR + "/masters.json";
     std::ifstream file(filePath);
     bool masterPasswordExists = false;
     
