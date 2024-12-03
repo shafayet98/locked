@@ -79,7 +79,62 @@ namespace PasswordManagement
     }
 
     void saveNewPassword(const string new_added_pass, const string new_pass_email, const string new_pass_website){
+
+        // specify file paths
+        std::string dirPath = "/Users/shafayetulislam/Documents/Locked/.data";
+        std::string filePath = dirPath + "/credentials.json";
+
+
+        // read the existing json
+        rapidjson::Document document;
+
+        std::ifstream inFile(filePath);
+        if (inFile.is_open()) {
+            std::stringstream buffer;
+            buffer << inFile.rdbuf();
+            std::string content = buffer.str();
+            inFile.close();
+            
+            // Parse existing content
+            if (!content.empty()) {
+                document.Parse(content.c_str());
+            }
+        }
+
+        if (!document.IsArray()) {
+            document.SetArray();
+        }
+
+        // Create new password object
+        rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
+        rapidjson::Value newEntry(rapidjson::kObjectType);
         
+        newEntry.AddMember("password", 
+            rapidjson::Value(new_added_pass.c_str(), allocator).Move(),
+            allocator);
+        newEntry.AddMember("email",
+            rapidjson::Value(new_pass_email.c_str(), allocator).Move(),
+            allocator);
+        newEntry.AddMember("website",
+            rapidjson::Value(new_pass_website.c_str(), allocator).Move(),
+            allocator);
+        
+        // Add the new entry to the array
+        document.PushBack(newEntry, allocator);
+        
+        // Write back to file
+        std::ofstream outFile(filePath);
+        if (!outFile) {
+            std::cerr << "Error opening file for writing." << std::endl;
+            return;
+        }
+        
+        rapidjson::StringBuffer buffer;
+        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+        document.Accept(writer);
+        outFile << buffer.GetString() << std::endl;
+        outFile.close();
+
     }
 
 
