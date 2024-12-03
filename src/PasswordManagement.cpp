@@ -50,6 +50,7 @@ namespace PasswordManagement
         std::ifstream file("/Users/shafayetulislam/Documents/Locked/.data/masters.json");
         if (!file.is_open()) {
             // Handle error
+            cout << "File Not Found" << "\n";
             return false;
         }
 
@@ -64,6 +65,7 @@ namespace PasswordManagement
 
         if (document.HasParseError()) {
             // Handle parsing error
+            cout << "Parse Error" << "\n";
             return false;
         } 
 
@@ -73,7 +75,6 @@ namespace PasswordManagement
                 return true;
             }
         }
-
         return false;
         
     }
