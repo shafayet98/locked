@@ -35,8 +35,6 @@ int main(){
     string website;
     string username;
 
-    PasswordManagement::storeMasterPassword("your_master_password", "your_username");
-
     bool exitApplication = false;
     while(!exitApplication){
         cout << "select option: ";
@@ -57,6 +55,42 @@ int main(){
 
                 PasswordManagement::storeMasterPassword(masterPassword, username);
             }
+
+            if (selectedOption == 2){
+                string mpass;
+                string new_added_pass;
+                string new_pass_email;
+                string new_pass_website;
+
+                // ask for master password
+                cout << "Please Enter Your Master Password: ";
+                cin >> mpass;
+                bool pass_match = PasswordManagement::checkMasterPassword(mpass);
+                // check if the master password is correct
+                // ask for the new password
+                // ask for corresponding website
+                // ask for corresponding email
+                if (pass_match == true){
+                    cout << "Please Enter Your New Password: " << "\n";
+                    cin >> new_added_pass;
+                    cout << "Please Enter Your Email (mandatory): " << "\n";
+                    cin >> new_pass_email;
+                    cout << "Please Enter Website Name (mandatory): " << "\n";
+                    cin >> new_pass_website;
+
+                    PasswordManagement::saveNewPassword(new_added_pass, new_pass_email, new_pass_website);
+
+                }else{
+                    cout << "Wrong Master Password. Please Try Again." << "\n";
+                }
+                
+                // save the password
+            }
+
+
+
+
+
             if (selectedOption == 5){
                 cout << "Exiting." <<endl;
                 exitApplication = true;
@@ -64,6 +98,5 @@ int main(){
             }
         }
     }
-
     return 0;
 }
