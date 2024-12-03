@@ -139,7 +139,52 @@ namespace PasswordManagement
     }
 
     string showRequestedPassword(const string website_name){
-        return "abx";
+        std::string dirPath = "/Users/shafayetulislam/Documents/Locked/.data";
+        std::string filePath = dirPath + "/credentials.json";
+        
+        // Read the file
+        std::ifstream file(filePath);
+        if (!file.is_open()) {
+            std::cerr << "Error: Could not open credentials file." << std::endl;
+            return "";
+        }
+
+        // Read file into string
+        std::stringstream buffer;
+        buffer << file.rdbuf();
+        std::string content = buffer.str();
+        file.close();
+
+        rapidjson::Document document;
+        document.Parse(content.c_str());
+
+        if (document.HasParseError()) {
+            std::cerr << "Error: Could not parse credentials file." << std::endl;
+            return "";
+        }
+
+        // Ensure document is an array
+        if (!document.IsArray()) {
+            std::cerr << "Error: Invalid credentials file format." << std::endl;
+            return "";
+        }
+        
+        // Search through the array for matching website
+        for (const auto& entry : document.GetArray()) {
+            if (entry.HasMember("website") && 
+                entry["website"].IsString() && 
+                std::string(entry["website"].GetString()) == website_name) {
+                
+                // Found matching website, return the password
+                if (entry.HasMember("password") && entry["password"].IsString()) {
+                    return entry["password"].GetString();
+                }
+            }
+        }
+        
+        // If no matching website found
+        return "No password found for this website.";
+
     }
 
 
