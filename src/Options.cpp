@@ -1,5 +1,7 @@
 #include "Options.h"
 #include <iostream>
+#include <fstream>
+
 
 Options::Options::Options() 
     : option1masterpass("Option 1: Enter Master Password:")
@@ -12,7 +14,24 @@ Options::Options::Options()
 
 void Options::Options::displayOptions()
 {
-    std::cout << option1masterpass << std::endl;
+
+    // Check if credentials file exists 
+    std::string filePath = "/Users/shafayetulislam/Documents/Locked/.data/masters.json";
+    std::ifstream file(filePath);
+    bool masterPasswordExists = false;
+    
+    // checking if the file has content
+    if (file.good()) {
+        std::string content;
+        std::getline(file, content);
+        masterPasswordExists = !content.empty();
+    }
+    file.close();
+
+    if (!masterPasswordExists) {
+        std::cout << option1masterpass << std::endl;
+    }
+    
     std::cout << option2addpass << std::endl;
     std::cout << option3viewpass << std::endl;
     std::cout << option4deletepass << std::endl;

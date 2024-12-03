@@ -16,7 +16,7 @@ namespace PasswordManagement
     {
 
         std::string dirPath = "/Users/shafayetulislam/Documents/Locked/.data";
-        std::string filePath = dirPath + "/credentials.json";
+        std::string filePath = dirPath + "/masters.json";
 
         std::ofstream file(filePath, std::ios::out);
         if (!file)
