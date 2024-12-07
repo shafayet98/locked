@@ -274,4 +274,23 @@ namespace PasswordManagement
         return true;
     }
 
+    // check strength of pass
+    bool checkStrength(const string pass){
+        int length = pass.length();
+
+        bool constainsLowerLetter = false;
+        bool constainsUpperLetter = false;
+        bool contsinsSpecialCharacter = false;
+        bool constainsNumber = false;
+        bool constiansSpace = false;
+
+
+        for (auto &ch: pass){
+            cout << ch << " "; 
+        }
+
+        return true;
+
+    }
+
 } // namespace PasswordManagement

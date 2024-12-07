@@ -48,6 +48,11 @@ int main(){
                 cin >> masterPassword;
                 cout << "Enter username: ";
                 cin >> username;
+
+                // check strength of the pass
+                bool isStrong;
+                isStrong = PasswordManagement::checkStrength(masterPassword);
+
                 PasswordManagement::storeMasterPassword(masterPassword, username);
             }
 
@@ -73,6 +78,10 @@ int main(){
                     cout << "Please Enter Website Name (mandatory & must be unique): " << "\n";
                     cin >> new_pass_website;
 
+                    // check strength of the pass
+                    bool isStrong;
+                    isStrong = PasswordManagement::checkStrength(masterPassword);
+                    
                     PasswordManagement::saveNewPassword(new_added_pass, new_pass_email, new_pass_website);
 
                 }else{
