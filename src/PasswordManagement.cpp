@@ -7,7 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <filesystem> 
+#include <filesystem>
 
 using namespace std;
 
@@ -275,22 +275,44 @@ namespace PasswordManagement
     }
 
     // check strength of pass
-    bool checkStrength(const string pass){
-        int length = pass.length();
+    bool checkStrength(const string pass)
+    {
+        bool hasLower = false;
+        bool hasUpper = false;
+        bool hasSpecial = false;
+        bool hasNumber = false;
 
-        bool constainsLowerLetter = false;
-        bool constainsUpperLetter = false;
-        bool contsinsSpecialCharacter = false;
-        bool constainsNumber = false;
-        bool constiansSpace = false;
-
-
-        for (auto &ch: pass){
-            cout << ch << " "; 
+        if (pass.length() <= 8)
+        {
+            return false;
+        }
+        for (auto& ch : pass)
+        {
+            if (islower(ch))
+            {
+                hasLower = true;
+            }
+            else if (isupper(ch))
+            {
+                hasUpper = true;
+            }
+            else if (isdigit(ch))
+            {
+                hasNumber = true;
+            }
+            else if (ch == '&' || ch == '@' || ch == '%')
+            {
+                hasSpecial = true;
+            }
         }
 
-        return true;
-
+        if(hasLower == true && hasUpper == true && hasNumber == true && hasSpecial == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
     }
 
 } // namespace PasswordManagement

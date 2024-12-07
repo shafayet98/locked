@@ -81,8 +81,14 @@ int main(){
                     // check strength of the pass
                     bool isStrong;
                     isStrong = PasswordManagement::checkStrength(masterPassword);
+                    if(isStrong == false){
+                        cout << "Password must be at least 8 digits with at least one number, special character and uppercase and lowercase letter" << "\n";
+                        cout << "Please try again" << "\n";
+                    }
+                    if(isStrong == true){
+                        PasswordManagement::saveNewPassword(new_added_pass, new_pass_email, new_pass_website);
+                    }
                     
-                    PasswordManagement::saveNewPassword(new_added_pass, new_pass_email, new_pass_website);
 
                 }else{
                     cout << "Wrong Master Password. Please Try Again." << "\n";
