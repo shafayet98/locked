@@ -275,17 +275,22 @@ namespace PasswordManagement
     }
 
     // check strength of pass
-    bool checkStrength(const string pass)
+    bool checkStrength(const string& pass)
     {
         bool hasLower = false;
         bool hasUpper = false;
         bool hasSpecial = false;
         bool hasNumber = false;
 
+        // Print length for debugging
+        cout << "Password length: " << pass.length() << endl;
+
+        // Length check (greater than 8)
         if (pass.length() <= 8)
         {
             return false;
         }
+
         for (auto& ch : pass)
         {
             if (islower(ch))
