@@ -282,9 +282,6 @@ namespace PasswordManagement
         bool hasSpecial = false;
         bool hasNumber = false;
 
-        // Print length for debugging
-        cout << "Password length: " << pass.length() << endl;
-
         // Length check (greater than 8)
         if (pass.length() <= 8)
         {
